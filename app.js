@@ -49,6 +49,7 @@ const state = {
 };
 
 const dom = {
+  phone: document.getElementById('phoneApp'),
   sbar: document.getElementById('sbar'),
   bbar: document.getElementById('bbar'),
   compactBar: document.getElementById('compactBar'),
@@ -78,6 +79,14 @@ const dom = {
   panelCloseBtn: document.getElementById('panelCloseBtn'),
   panelList: document.getElementById('panelList')
 };
+
+function ensureChromeVisible() {
+  state.chromeHidden = false;
+  dom.sbar.classList.remove('hidden');
+  dom.bbar.classList.remove('hidden');
+  dom.bottomBar.classList.remove('hidden');
+  dom.compactBar.classList.remove('visible');
+}
 
 function updateStatusTime() {
   const now = new Date();
@@ -346,11 +355,7 @@ function showChrome() {
     return;
   }
 
-  state.chromeHidden = false;
-  dom.sbar.classList.remove('hidden');
-  dom.bbar.classList.remove('hidden');
-  dom.bottomBar.classList.remove('hidden');
-  dom.compactBar.classList.remove('visible');
+  ensureChromeVisible();
 }
 
 function openDetail(productId) {
@@ -362,7 +367,8 @@ function openDetail(productId) {
   state.activeProductId = product.id;
   state.detailOpen = true;
   closePanel();
-  showChrome();
+  ensureChromeVisible();
+  dom.phone.classList.add('detail-open');
 
   dom.detailImage.src = product.image;
   dom.detailImage.alt = shortName(product.name);
@@ -424,6 +430,7 @@ function closeDetail() {
   const closedId = state.activeProductId;
   state.detailOpen = false;
   state.activeProductId = null;
+  dom.phone.classList.remove('detail-open');
 
   dom.scrim.classList.add('hidden');
   dom.detailOverlay.classList.add('hidden');
