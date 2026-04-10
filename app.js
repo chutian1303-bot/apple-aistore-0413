@@ -1,555 +1,783 @@
-const homeIntents = ['进店看新品', '帮我找优惠', '通勤穿搭推荐', '帮我找风衣'];
-const detailIntents = ['尺码推荐', 'AI试衣建议', '搭配这件商品', '怎么买更划算'];
+const HOME_TAGS = ['→ 和你风格匹配', '', '→ 近期热销', '', '', '', '', '', '', '', '', ''];
+const HOME_REPLY_TEXT = 'anna 已为你整理好了 28 款新品';
 
-const products = [
+const FALLBACK_PRODUCTS = [
   {
-    id: 'p1',
-    name: '亚麻解构西装外套',
-    price: 1580,
-    tag: 'NEW',
-    color: '#e7dfd1',
-    desc: '亚麻混纺材质，轻量透气，适合春夏通勤与轻户外。'
+    id: '873666070231',
+    name: 'JNBY/江南布衣春秋休闲伞兵裤高支亚麻舒适长裤设计感5P3E10530',
+    price: 978.85,
+    image: 'https://img.alicdn.com/bao/uploaded/i4/412129187/O1CN01NnHtgj2Hjhn0mjPVw_!!412129187.jpg',
+    link: 'https://detail.tmall.com/item.htm?id=873666070231'
   },
   {
-    id: 'p2',
-    name: 'LESS 立领短夹克',
-    price: 1680,
-    tag: '热卖',
-    color: '#d4c9ba',
-    desc: '立领廓形，适合叠穿，兼顾通勤和休闲场景。'
+    id: '1025961930122',
+    name: '【商场同款】JNBY/江南布衣26夏新品衬衫棉丝蓝色条纹女5Q521004H',
+    price: 1395,
+    image: 'https://img.alicdn.com/bao/uploaded/i1/412129187/O1CN01jnvOmP2Hjhn2MQgKH_!!412129187.jpg',
+    link: 'https://detail.tmall.com/item.htm?id=1025961930122'
   },
   {
-    id: 'p3',
-    name: '不规则下摆连衣裙',
-    price: 1980,
-    tag: 'NEW',
-    color: '#cfc6b6',
-    desc: '不规则剪裁提升层次感，日常出街更有辨识度。'
+    id: '1020045694318',
+    name: '【商场同款】JNBY/江南布衣26夏新品马甲简约V领含亚麻5Q4510540',
+    price: 1395,
+    image: 'https://img.alicdn.com/bao/uploaded/i2/412129187/O1CN01IXD0zc2Hjhn166jWr_!!412129187.jpg',
+    link: 'https://detail.tmall.com/item.htm?id=1020045694318'
   },
   {
-    id: 'p4',
-    name: 'LESS 春季薄风衣',
-    price: 1380,
-    tag: '同风格',
-    color: '#dad2c5',
-    desc: '轻薄防风，版型利落，适合早春温差天气。'
-  },
-  {
-    id: 'p5',
-    name: '宽松针织开衫',
-    price: 1280,
-    tag: '通勤',
-    color: '#cec4b6',
-    desc: '柔软针织面料，版型宽松，搭配衬衫或连衣裙都合适。'
-  },
-  {
-    id: 'p6',
-    name: '天丝衬衫连衣裙',
-    price: 1480,
-    tag: '预售',
-    color: '#c7bcaf',
-    desc: '天丝面料垂感好，通勤与周末场景切换自然。'
-  },
-  {
-    id: 'p7',
-    name: '高腰亚麻阔腿裤',
-    price: 1080,
-    tag: '搭配',
-    color: '#ddd5c8',
-    desc: '高腰阔腿版型，显腿长，适配多种上装。'
-  },
-  {
-    id: 'p8',
-    name: '拼接设计印花T恤',
-    price: 580,
-    tag: '优惠',
-    color: '#e4ddd0',
-    desc: '印花拼接设计，单穿或内搭都能提升视觉重点。'
+    id: '809802427931',
+    name: 'JNBY/江南布衣春秋西服外套H型扭扭乐极简风设计感日常5O7715770',
+    price: 1198.9,
+    image: 'https://img.alicdn.com/bao/uploaded/i3/412129187/O1CN01M6MRaI2Hjhn10IMYN_!!412129187.jpg',
+    link: 'https://detail.tmall.com/item.htm?id=809802427931'
   }
 ];
 
 const state = {
+  products: [],
+  feedIds: [],
+  mode: 'home',
   detailOpen: false,
-  historyOpen: false,
-  selectedProductId: null,
+  panelType: null,
+  activeProductId: null,
   viewed: [],
-  canvasItems: [],
-  activeChip: '',
-  pending: false
+  messages: [],
+  pinnedMessageId: null,
+  chromeHidden: false,
+  lastHomeY: 0,
+  hideTimer: null,
+  prefilledAfterView: false
 };
 
 const dom = {
-  storeSub: document.getElementById('storeSub'),
-  welcomeText: document.getElementById('welcomeText'),
-  feedMeta: document.getElementById('feedMeta'),
+  sbar: document.getElementById('sbar'),
+  bbar: document.getElementById('bbar'),
+  compactBar: document.getElementById('compactBar'),
+  statusTime: document.getElementById('statusTime'),
+  replySub: document.getElementById('replySub'),
+  homeScroll: document.getElementById('homeScroll'),
+  canvas: document.getElementById('canvas'),
   feedGrid: document.getElementById('feedGrid'),
-  canvasStack: document.getElementById('canvasStack'),
-  intentStrip: document.getElementById('intentStrip'),
+  chipsRow: document.getElementById('chipsRow'),
+  bottomBar: document.getElementById('bottomBar'),
   intentInput: document.getElementById('intentInput'),
   sendBtn: document.getElementById('sendBtn'),
+  scrim: document.getElementById('scrim'),
   detailOverlay: document.getElementById('detailOverlay'),
   detailCloseBtn: document.getElementById('detailCloseBtn'),
-  detailAiBtn: document.getElementById('detailAiBtn'),
-  historySheet: document.getElementById('historySheet'),
-  historyList: document.getElementById('historyList'),
-  historyCloseBtn: document.getElementById('historyCloseBtn'),
+  detailTryBtn: document.getElementById('detailTryBtn'),
   detailImage: document.getElementById('detailImage'),
-  detailImageLabel: document.getElementById('detailImageLabel'),
-  detailPrice: document.getElementById('detailPrice'),
-  detailTag: document.getElementById('detailTag'),
   detailName: document.getElementById('detailName'),
-  detailDesc: document.getElementById('detailDesc'),
+  detailMeta: document.getElementById('detailMeta'),
   detailInsight: document.getElementById('detailInsight'),
-  bundleList: document.getElementById('bundleList'),
-  buyPrice: document.getElementById('buyPrice')
+  outfitRow: document.getElementById('outfitRow'),
+  buyPriceMain: document.getElementById('buyPriceMain'),
+  buyPriceOld: document.getElementById('buyPriceOld'),
+  panelBackdrop: document.getElementById('panelBackdrop'),
+  panelRegion: document.getElementById('panelRegion'),
+  panelTitle: document.getElementById('panelTitle'),
+  panelCloseBtn: document.getElementById('panelCloseBtn'),
+  panelList: document.getElementById('panelList')
 };
 
-function money(price) {
-  return `¥${price.toLocaleString('zh-CN')}`;
-}
-
-function timeLabel() {
+function updateStatusTime() {
   const now = new Date();
   const hh = String(now.getHours()).padStart(2, '0');
   const mm = String(now.getMinutes()).padStart(2, '0');
-  return `${hh}:${mm}`;
+  dom.statusTime.textContent = `${hh}:${mm}`;
 }
 
-function findProductById(id) {
-  return products.find((item) => item.id === id);
+function money(price) {
+  return `¥${Number(price).toLocaleString('zh-CN', {
+    minimumFractionDigits: Number(price) % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2
+  })}`;
 }
 
-function renderFeed() {
-  dom.feedGrid.innerHTML = products
-    .map(
-      (item) => `
-      <article class="product-card">
-        <div class="product-thumb" style="background:${item.color}">
-          <span class="tag-badge">${item.tag}</span>
-          <span>${item.name}</span>
-        </div>
-        <div class="product-info">
-          <p class="product-name">${item.name}</p>
-          <div class="product-meta">
-            <span class="price">${money(item.price)}</span>
-            <button type="button" data-open="${item.id}">看详情</button>
-          </div>
-        </div>
-      </article>
-    `
-    )
+function shortName(name) {
+  return name
+    .replace(/【[^】]*】/g, '')
+    .replace(/^JNBY\/江南布衣/, '')
+    .replace(/^\//, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function nowLabel() {
+  const now = new Date();
+  return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+}
+
+function getProduct(id) {
+  return state.products.find((item) => item.id === id) || null;
+}
+
+function isViewed(id) {
+  return state.viewed.some((item) => item.id === id);
+}
+
+function resolveBadge(product, index) {
+  if (product.name.includes('预售')) {
+    return 'presale';
+  }
+  if (index < 8 || product.name.includes('新品')) {
+    return 'new';
+  }
+  return '';
+}
+
+function renderFeedCard(product, options = {}) {
+  const viewedMark = options.viewed ? '<div class="viewed-mark">已看过</div>' : '';
+  const tag = options.tag ? `<div class="fi-tag">${escapeHtml(options.tag)}</div>` : '<div class="fi-tag"></div>';
+  const badgeType = options.badge || '';
+  const badge = badgeType === 'new'
+    ? '<div class="new-badge">NEW</div>'
+    : badgeType === 'presale'
+      ? '<div class="presale-badge">预售</div>'
+      : '';
+
+  return `
+    <article class="fi" data-open="${product.id}">
+      <div class="fi-img">
+        <img src="${product.image}" alt="${escapeHtml(shortName(product.name))}" loading="lazy">
+        ${badge}
+        ${viewedMark}
+      </div>
+      <div class="fi-body">
+        ${tag}
+        <div class="fi-name">${escapeHtml(shortName(product.name))}</div>
+        <div class="fi-price">${money(product.price)}</div>
+      </div>
+    </article>
+  `;
+}
+
+function renderHomeFeed() {
+  dom.feedGrid.innerHTML = state.feedIds
+    .map((id, index) => {
+      const product = getProduct(id);
+      if (!product) {
+        return '';
+      }
+      return renderFeedCard(product, {
+        tag: HOME_TAGS[index] || '',
+        badge: resolveBadge(product, index),
+        viewed: isViewed(product.id)
+      });
+    })
     .join('');
 }
 
-function renderIntentStrip(list) {
-  dom.intentStrip.innerHTML = list
-    .map(
-      (item) =>
-        `<button class="intent-chip ${state.activeChip === item ? 'active' : ''}" type="button" data-intent="${item}">${item}</button>`
+function pickByKeywords(keywords, limit) {
+  const matched = state.products.filter((item) => keywords.some((word) => item.name.includes(word)));
+  if (matched.length >= limit) {
+    return matched.slice(0, limit);
+  }
+
+  const ids = new Set(matched.map((item) => item.id));
+  for (const item of state.products) {
+    if (!ids.has(item.id)) {
+      matched.push(item);
+      ids.add(item.id);
+    }
+    if (matched.length >= limit) {
+      break;
+    }
+  }
+  return matched.slice(0, limit);
+}
+
+function buildAnswer(query) {
+  const text = query.trim();
+  const lower = text.toLowerCase();
+  const activeProduct = getProduct(state.activeProductId);
+
+  if (state.detailOpen && activeProduct) {
+    if (text.includes('尺码')) {
+      return {
+        summary: '尺码推荐已更新',
+        answer: `这件 ${shortName(activeProduct.name)} 建议优先试 S 码；如果喜欢更宽松，可以试 M 码。`,
+        picks: [activeProduct]
+      };
+    }
+
+    if (text.includes('试衣') || lower.includes('ai')) {
+      return {
+        summary: 'AI试衣建议已更新',
+        answer: `已为你生成 ${shortName(activeProduct.name)} 的 AI 试衣建议：浅色内搭 + 直筒裤更利落，通勤和周末都能穿。`,
+        picks: [activeProduct]
+      };
+    }
+
+    if (text.includes('优惠') || text.includes('便宜') || text.includes('券')) {
+      const discounted = Math.round(activeProduct.price * 0.88 * 100) / 100;
+      return {
+        summary: '优惠信息已更新',
+        answer: `这件支持店铺券叠加，到手约 ${money(discounted)}，再加购同系列下装可享套装减免。`,
+        picks: [activeProduct]
+      };
+    }
+
+    return {
+      summary: '商品问答已更新',
+      answer: `关于 ${shortName(activeProduct.name)}，你可以继续问我尺码、AI试衣、搭配方案或优惠方式。`,
+      picks: [activeProduct]
+    };
+  }
+
+  if (text.includes('风衣') || text.includes('外套') || text.includes('夹克')) {
+    const picks = pickByKeywords(['风衣', '外套', '夹克', '西服'], 5);
+    return {
+      summary: `同风格的风衣 ${picks.length}款`,
+      answer: `给你找到了 ${picks.length} 件同风格外套，版型偏利落，和你最近看的款式风格一致。`,
+      picks
+    };
+  }
+
+  if (text.includes('优惠') || text.includes('券') || text.includes('便宜')) {
+    const picks = [...state.products].sort((a, b) => a.price - b.price).slice(0, 5);
+    return {
+      summary: `优惠款 ${picks.length}款`,
+      answer: '我先按到手价给你排了更划算的商品，你可以直接点开详情继续问搭配和尺码。',
+      picks
+    };
+  }
+
+  if (text.includes('新品') || text.includes('上新')) {
+    const picks = state.products.slice(0, 5);
+    return {
+      summary: `新品推荐 ${picks.length}款`,
+      answer: '结合你的进店意图，我先把新品里匹配度更高的几款放在这里。',
+      picks
+    };
+  }
+
+  const picks = state.products.slice(2, 7);
+  return {
+    summary: `推荐结果 ${picks.length}款`,
+    answer: '收到你的意图，我先给你一组高匹配结果。你也可以继续限定预算、颜色或场景。',
+    picks
+  };
+}
+
+function renderMessageFeed(products) {
+  const tags = ['→ 最接近你看的款', '→ 同系列', '', '', ''];
+  return products
+    .map((item, index) =>
+      renderFeedCard(item, {
+        tag: tags[index] || '',
+        badge: resolveBadge(item, index)
+      })
     )
     .join('');
 }
 
 function renderCanvas() {
-  if (!state.canvasItems.length) {
-    dom.canvasStack.innerHTML = '';
+  if (!state.messages.length) {
+    dom.canvas.innerHTML = '<div class="empty-text">你可以直接提问，比如：给我推荐同款风衣。</div>';
     return;
   }
 
-  dom.canvasStack.innerHTML = state.canvasItems
-    .map((item) => {
-      const picksHtml = item.picks.length
-        ? `<div class="canvas-picks">
-            ${item.picks
-              .map(
-                (pick) => `
-              <div class="canvas-pick">
-                <div class="canvas-pick-thumb" style="background:${pick.color}"></div>
-                <div class="canvas-pick-info">
-                  <div class="canvas-pick-name">${pick.name}</div>
-                  <div class="canvas-pick-price">${money(pick.price)}</div>
-                </div>
-                <button type="button" data-open="${pick.id}">详情</button>
-              </div>
-            `
-              )
-              .join('')}
-          </div>`
-        : '';
-
+  dom.canvas.innerHTML = state.messages
+    .map((message, index) => {
+      const pinned = state.pinnedMessageId === message.id ? 'pinned' : '';
+      const collapsed = index === 0 && dom.canvas.scrollTop > 40 ? 'collapsed' : '';
       return `
-        <article class="canvas-card">
-          <div class="user-bubble">${item.question}</div>
-          <div class="assistant-bubble">${item.answer}</div>
-          ${picksHtml}
-        </article>
+        <section class="msg-block ${pinned}" id="msg-${message.id}">
+          <div class="user-row"><div class="user-bubble">${escapeHtml(message.query)}</div></div>
+          <div class="ar-text ${collapsed}" data-latest="${index === 0 ? '1' : '0'}">${escapeHtml(message.answer)}</div>
+          <div class="feed-grid" style="padding:0 0 8px;">
+            ${renderMessageFeed(message.picks)}
+          </div>
+        </section>
       `;
     })
     .join('');
 }
 
-function currentIntentList() {
-  const base = state.detailOpen ? detailIntents : homeIntents;
-  if (!state.detailOpen && state.viewed.length > 0) {
-    return ['店内足迹', ...base];
-  }
-  return base;
-}
-
-function buildAnswer(query) {
-  const q = query.trim();
-  const lc = q.toLowerCase();
-  const selected = findProductById(state.selectedProductId);
-
-  if (state.detailOpen && selected) {
-    if (q.includes('尺码')) {
-      return {
-        answer: `基于你的历史购买和这件 ${selected.name} 的版型，我建议优先试 S 码；如果喜欢更宽松可试 M 码。`,
-        picks: []
-      };
-    }
-
-    if (q.includes('试衣') || lc.includes('ai')) {
-      return {
-        answer: `已为你生成这件 ${selected.name} 的 AI 试衣建议：推荐搭配浅色内搭与直筒裤，整体更利落。`,
-        picks: [selected]
-      };
-    }
-
-    if (q.includes('优惠') || q.includes('便宜') || q.includes('折')) {
-      return {
-        answer: `这件商品当前可叠加会员券，预计到手 ${money(Math.round(selected.price * 0.88))}，再加购同系列下装还有套装减免。`,
-        picks: [selected]
-      };
-    }
-
-    return {
-      answer: `关于 ${selected.name}，你可以继续问我尺码、试衣效果、搭配方案或优惠规则，我会直接在当前页承接。`,
-      picks: [selected]
-    };
-  }
-
-  if (q.includes('新品') || q.includes('上新')) {
-    return {
-      answer: '根据你的进店意图，我先把新品中匹配度最高的 3 款放在这里，你可以直接打开详情继续追问。',
-      picks: products.slice(0, 3)
-    };
-  }
-
-  if (q.includes('优惠') || q.includes('便宜') || q.includes('券')) {
-    const picks = products.filter((item) => item.price <= 1380).slice(0, 3);
-    return {
-      answer: '你当前可用 2 张店铺券，我先给你筛了更划算的款式，并按到手价优先排序。',
-      picks
-    };
-  }
-
-  if (q.includes('风衣') || q.includes('外套')) {
-    const picks = products.filter((item) => item.name.includes('风衣') || item.name.includes('外套')).slice(0, 3);
-    return {
-      answer: '已根据你的描述筛到同风格外套，版型都偏利落，适合通勤场景。',
-      picks
-    };
-  }
-
-  return {
-    answer: '收到你的意图。我先给你一个高匹配结果集合，你也可以进一步限定预算、颜色或场景。',
-    picks: products.slice(1, 4)
-  };
-}
-
-function setPending(pending) {
-  state.pending = pending;
-  dom.sendBtn.disabled = pending;
-  dom.sendBtn.textContent = pending ? '思考中...' : '发送';
-  dom.intentInput.disabled = pending;
-}
-
-function normalizeServerPicks(rawPicks) {
-  if (!Array.isArray(rawPicks)) {
-    return [];
-  }
-
-  return rawPicks
-    .map((pick) => {
-      if (typeof pick === 'string') {
-        return findProductById(pick);
-      }
-
-      if (pick && typeof pick === 'object' && typeof pick.id === 'string') {
-        return findProductById(pick.id);
-      }
-
-      return null;
-    })
-    .filter(Boolean)
-    .slice(0, 3);
-}
-
-async function fetchServerAnswer(query) {
-  const payload = {
-    query,
-    context: {
-      detailOpen: state.detailOpen,
-      currentProductId: state.selectedProductId,
-      viewedProductIds: state.viewed.map((item) => item.id),
-      allowedProductIds: products.map((item) => item.id)
-    }
-  };
-
-  const response = await fetch('/api/chat', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
-
-  if (!response.ok) {
-    throw new Error(`chat api status ${response.status}`);
-  }
-
-  const data = await response.json();
-  if (!data || typeof data.answer !== 'string' || !data.answer.trim()) {
-    throw new Error('invalid chat payload');
-  }
-
-  return {
-    answer: data.answer.trim(),
-    picks: normalizeServerPicks(data.picks)
-  };
-}
-
-async function sendIntent(manualText) {
-  const text = (manualText || dom.intentInput.value).trim();
-  if (!text || state.pending) {
+function showReplySub(text) {
+  if (!text) {
+    dom.replySub.classList.remove('visible');
+    dom.replySub.textContent = '';
     return;
   }
 
-  setPending(true);
-  let result = null;
-
-  try {
-    result = await fetchServerAnswer(text);
-  } catch (_error) {
-    result = buildAnswer(text);
-  } finally {
-    setPending(false);
-  }
-
-  state.canvasItems.unshift({
-    question: text,
-    answer: result.answer,
-    picks: result.picks,
-    createdAt: timeLabel()
-  });
-
-  dom.intentInput.value = '';
-  state.activeChip = text;
-  dom.storeSub.textContent = `已承接意图：${text}`;
-  dom.feedMeta.textContent = `最后更新 ${timeLabel()}`;
-
-  renderCanvas();
-  renderIntentStrip(currentIntentList());
-  closeHistorySheet();
+  dom.replySub.textContent = text;
+  dom.replySub.classList.add('visible');
 }
 
-function upsertViewed(productId) {
-  const existsIndex = state.viewed.findIndex((item) => item.id === productId);
-  const viewedItem = {
-    id: productId,
-    time: timeLabel()
-  };
+function showHomeMode() {
+  state.mode = 'home';
+  dom.homeScroll.classList.remove('hidden');
+  dom.canvas.classList.add('hidden');
+  state.pinnedMessageId = null;
+}
 
-  if (existsIndex >= 0) {
-    state.viewed.splice(existsIndex, 1);
+function showCanvasMode() {
+  state.mode = 'canvas';
+  dom.homeScroll.classList.add('hidden');
+  dom.canvas.classList.remove('hidden');
+  dom.homeScroll.scrollTop = 0;
+  showChrome();
+}
+
+function hideChrome() {
+  if (state.chromeHidden || state.mode !== 'home' || state.detailOpen || state.panelType) {
+    return;
   }
 
-  state.viewed.unshift(viewedItem);
+  state.chromeHidden = true;
+  dom.sbar.classList.add('hidden');
+  dom.bbar.classList.add('hidden');
+  dom.bottomBar.classList.add('hidden');
+  dom.compactBar.classList.add('visible');
+}
+
+function showChrome() {
+  if (!state.chromeHidden) {
+    return;
+  }
+
+  state.chromeHidden = false;
+  dom.sbar.classList.remove('hidden');
+  dom.bbar.classList.remove('hidden');
+  dom.bottomBar.classList.remove('hidden');
+  dom.compactBar.classList.remove('visible');
 }
 
 function openDetail(productId) {
-  const product = findProductById(productId);
+  const product = getProduct(productId);
   if (!product) {
     return;
   }
 
-  state.selectedProductId = product.id;
+  state.activeProductId = product.id;
   state.detailOpen = true;
-  state.activeChip = '';
+  closePanel();
+  showChrome();
 
-  closeHistorySheet();
-  upsertViewed(product.id);
-  renderDetail(product);
-  renderIntentStrip(currentIntentList());
+  dom.detailImage.src = product.image;
+  dom.detailImage.alt = shortName(product.name);
+  dom.detailName.textContent = shortName(product.name);
+  dom.detailMeta.textContent = '100%棉 · 日常通勤 · 可叠搭';
+  dom.detailInsight.innerHTML = `你近期更偏好 <span class="ac-hi">利落廓形</span>，这件 <span class="ac-hi">${escapeHtml(shortName(product.name))}</span> 在版型和颜色上都更匹配。`;
+  dom.buyPriceMain.textContent = money(product.price);
+  dom.buyPriceOld.textContent = money(Math.round(product.price * 1.26));
 
-  dom.detailOverlay.classList.add('open');
-  dom.detailOverlay.setAttribute('aria-hidden', 'false');
-  dom.storeSub.textContent = `正在承接：${product.name}`;
-  dom.feedMeta.textContent = '详情浮层已打开';
-  dom.intentInput.placeholder = '继续问这件商品：尺码、试衣、优惠、搭配';
-}
-
-function closeDetail() {
-  state.detailOpen = false;
-  state.activeChip = '';
-
-  dom.detailOverlay.classList.remove('open');
-  dom.detailOverlay.setAttribute('aria-hidden', 'true');
-  dom.storeSub.textContent = '已返回 Feeds，可继续提问或查看店内足迹';
-  dom.feedMeta.textContent = `最后更新 ${timeLabel()}`;
-  dom.intentInput.placeholder = '在店内随时提问：找商品、问优惠、要搭配...';
-
-  renderIntentStrip(currentIntentList());
-}
-
-function renderDetail(product) {
-  dom.detailImage.style.background = product.color;
-  dom.detailImageLabel.textContent = product.name;
-  dom.detailPrice.textContent = money(product.price);
-  dom.detailTag.textContent = product.tag;
-  dom.detailName.textContent = product.name;
-  dom.detailDesc.textContent = product.desc;
-  dom.detailInsight.textContent = `你最近浏览了同风格单品，${product.name} 在版型与颜色上和你的偏好匹配度较高，建议优先试 S 码。`;
-  dom.buyPrice.textContent = money(product.price);
-
-  const bundles = products
-    .filter((item) => item.id !== product.id)
-    .slice(0, 2)
+  const related = [product, ...state.products.filter((item) => item.id !== product.id).slice(0, 2)];
+  dom.outfitRow.innerHTML = related
     .map(
-      (item) => `
-      <div class="bundle-item">
-        <span>${item.name}</span>
-        <strong>${money(item.price)}</strong>
-      </div>
-    `
+      (item, index) => `
+        <div class="oi" data-open="${item.id}">
+          <div class="oi-img">
+            <img src="${item.image}" alt="${escapeHtml(shortName(item.name))}">
+            ${index === 0 ? '<div class="oi-this">本款</div>' : ''}
+          </div>
+          <div class="oi-nm">${escapeHtml(shortName(item.name))}</div>
+          <div class="oi-pr">${money(item.price)}</div>
+        </div>
+      `
     )
     .join('');
 
-  dom.bundleList.innerHTML = bundles;
+  dom.scrim.classList.remove('hidden');
+  dom.detailOverlay.classList.remove('hidden');
+  dom.detailOverlay.setAttribute('aria-hidden', 'false');
+  dom.intentInput.placeholder = '继续问这件商品：尺码、试衣、优惠、搭配';
+
+  renderChips();
 }
 
-function renderHistorySheet() {
-  if (!state.viewed.length) {
-    dom.historyList.innerHTML = '<div class="empty-sheet">还没有浏览足迹，先去点开一件商品看看吧。</div>';
+function recordViewed(productId) {
+  const product = getProduct(productId);
+  if (!product) {
     return;
   }
 
-  dom.historyList.innerHTML = state.viewed
-    .map((viewed) => {
-      const product = findProductById(viewed.id);
-      if (!product) {
-        return '';
-      }
+  const now = nowLabel();
+  const existingIndex = state.viewed.findIndex((item) => item.id === productId);
+  const next = { id: product.id, time: now };
 
-      return `
-        <article class="sheet-item">
-          <div class="sheet-thumb" style="background:${product.color}"></div>
-          <div>
-            <div class="sheet-name">${product.name}</div>
-            <div class="sheet-meta">${money(product.price)} · ${viewed.time} 浏览</div>
+  if (existingIndex >= 0) {
+    state.viewed.splice(existingIndex, 1);
+  }
+
+  state.viewed.unshift(next);
+  if (state.viewed.length > 20) {
+    state.viewed.pop();
+  }
+}
+
+function closeDetail() {
+  if (!state.detailOpen) {
+    return;
+  }
+
+  const closedId = state.activeProductId;
+  state.detailOpen = false;
+  state.activeProductId = null;
+
+  dom.scrim.classList.add('hidden');
+  dom.detailOverlay.classList.add('hidden');
+  dom.detailOverlay.setAttribute('aria-hidden', 'true');
+  dom.intentInput.placeholder = 'anna 在线，可以问我任何问题';
+
+  if (closedId) {
+    recordViewed(closedId);
+  }
+
+  renderHomeFeed();
+  renderChips();
+
+  if (state.mode === 'home') {
+    showReplySub(HOME_REPLY_TEXT);
+
+    if (!state.prefilledAfterView) {
+      dom.intentInput.value = '找下同风格的外套';
+      state.prefilledAfterView = true;
+    }
+  }
+}
+
+function formatHistoryTag(message) {
+  if (message.picks.length) {
+    return `<span class="hl-tag result">推荐了 ${message.picks.length} 个商品</span>`;
+  }
+  return '<span class="hl-tag">anna 已回复</span>';
+}
+
+function renderPanelList() {
+  if (state.panelType === 'footprint') {
+    dom.panelTitle.textContent = state.viewed.length ? `店内足迹 · 最近浏览 ${state.viewed.length} 件` : '店内足迹';
+
+    if (!state.viewed.length) {
+      dom.panelList.innerHTML = '<div class="empty-text">还没有浏览足迹，先点开一件商品看看吧。</div>';
+      return;
+    }
+
+    dom.panelList.innerHTML = state.viewed
+      .map((record) => {
+        const product = getProduct(record.id);
+        if (!product) {
+          return '';
+        }
+
+        return `
+          <button class="fp-item" type="button" data-open="${product.id}">
+            <div class="fp-thumb"><img src="${product.image}" alt="${escapeHtml(shortName(product.name))}"></div>
+            <div class="fp-info">
+              <div class="fp-name">${escapeHtml(shortName(product.name))}</div>
+              <div class="fp-price">${money(product.price)}</div>
+              <div class="fp-time">${record.time} 浏览</div>
+            </div>
+            <div class="hl-arrow">›</div>
+          </button>
+        `;
+      })
+      .join('');
+    return;
+  }
+
+  dom.panelTitle.textContent = `历史消息 · 共 ${state.messages.length} 条`;
+
+  if (!state.messages.length) {
+    dom.panelList.innerHTML = '<div class="empty-text">还没有历史消息，你可以先在底部提问。</div>';
+    return;
+  }
+
+  dom.panelList.innerHTML = state.messages
+    .map(
+      (message) => `
+        <button class="hl-item" type="button" data-msg="${message.id}">
+          <div class="hl-left">
+            <div class="hl-q">${escapeHtml(message.query)}</div>
+            <div class="hl-meta">
+              <span class="hl-time">${message.time}</span>
+              ${formatHistoryTag(message)}
+            </div>
           </div>
-          <button type="button" data-open="${product.id}">重看</button>
-        </article>
-      `;
-    })
+          <div class="hl-arrow">›</div>
+        </button>
+      `
+    )
     .join('');
 }
 
-function openHistorySheet() {
-  renderHistorySheet();
-  state.historyOpen = true;
-  state.activeChip = '店内足迹';
-  renderIntentStrip(currentIntentList());
-  dom.historySheet.classList.add('open');
-  dom.historySheet.setAttribute('aria-hidden', 'false');
+function openPanel(type) {
+  state.panelType = type;
+  renderPanelList();
+  dom.panelBackdrop.classList.remove('hidden');
+  dom.panelRegion.classList.remove('hidden');
+  dom.panelRegion.setAttribute('aria-hidden', 'false');
 }
 
-function closeHistorySheet() {
-  state.historyOpen = false;
-  if (state.activeChip === '店内足迹') {
-    state.activeChip = '';
-    renderIntentStrip(currentIntentList());
+function closePanel() {
+  if (!state.panelType) {
+    return;
   }
-  dom.historySheet.classList.remove('open');
-  dom.historySheet.setAttribute('aria-hidden', 'true');
+
+  state.panelType = null;
+  dom.panelBackdrop.classList.add('hidden');
+  dom.panelRegion.classList.add('hidden');
+  dom.panelRegion.setAttribute('aria-hidden', 'true');
+}
+
+function renderChips() {
+  const badge = state.viewed.length ? `<span class="foot-badge">${state.viewed.length}</span>` : '';
+  const base = state.detailOpen
+    ? ['尺码推荐', '搭配建议', 'AI 试衣', '怎么买便宜']
+    : ['找优惠券', '穿搭推荐', 'AI 试衣'];
+
+  const chips = [
+    { key: 'footprint', label: `👣 店内足迹${badge}`, cls: 'foot' },
+    { key: 'history', label: '💬 历史消息', cls: 'msg' },
+    ...base.map((item) => ({ key: item, label: item, cls: '' }))
+  ];
+
+  dom.chipsRow.innerHTML = chips
+    .map((chip) => `<button class="chip ${chip.cls}" type="button" data-chip="${chip.key}">${chip.label}</button>`)
+    .join('');
+}
+
+function runChipAction(key) {
+  if (key === 'footprint') {
+    openPanel('footprint');
+    return;
+  }
+
+  if (key === 'history') {
+    openPanel('history');
+    return;
+  }
+
+  if (key === 'AI 试衣') {
+    dom.intentInput.value = state.detailOpen ? '帮我生成这件的AI试衣建议' : '给我推荐同款风衣';
+  } else if (key === '搭配建议') {
+    dom.intentInput.value = '帮我搭一套同风格穿搭';
+  } else if (key === '尺码推荐') {
+    dom.intentInput.value = '这件夹克推荐什么尺码';
+  } else if (key === '怎么买便宜') {
+    dom.intentInput.value = '这件怎么买更便宜';
+  } else {
+    dom.intentInput.value = key;
+  }
+
+  dom.intentInput.focus();
+}
+
+function findMessageById(id) {
+  return state.messages.find((item) => item.id === id) || null;
+}
+
+function pinMessage(messageId) {
+  const message = findMessageById(messageId);
+  if (!message) {
+    return;
+  }
+
+  showCanvasMode();
+  state.pinnedMessageId = messageId;
+  renderCanvas();
+  showReplySub('');
+
+  const target = document.getElementById(`msg-${messageId}`);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function toggleCanvasSummary() {
+  if (state.mode !== 'canvas' || !state.messages.length) {
+    return;
+  }
+
+  const latest = state.messages[0];
+  const latestText = dom.canvas.querySelector('[data-latest="1"]');
+  const collapsed = dom.canvas.scrollTop > 40;
+
+  if (latestText) {
+    latestText.classList.toggle('collapsed', collapsed);
+  }
+
+  if (collapsed) {
+    showReplySub(latest.summary);
+  } else {
+    showReplySub('');
+  }
+}
+
+function sendQuery() {
+  const query = dom.intentInput.value.trim();
+  if (!query) {
+    return;
+  }
+
+  closePanel();
+
+  const result = buildAnswer(query);
+  const message = {
+    id: `m${Date.now()}`,
+    query,
+    answer: result.answer,
+    summary: result.summary,
+    picks: result.picks,
+    time: nowLabel()
+  };
+
+  state.messages.unshift(message);
+  state.pinnedMessageId = null;
+
+  if (state.detailOpen) {
+    dom.detailInsight.textContent = result.answer;
+    dom.intentInput.value = '';
+    renderChips();
+    return;
+  }
+
+  showCanvasMode();
+  renderCanvas();
+  renderChips();
+  dom.intentInput.value = '';
+  dom.canvas.scrollTop = 0;
+  showReplySub('');
+}
+
+function onHomeScroll() {
+  if (state.mode !== 'home' || state.detailOpen || state.panelType) {
+    return;
+  }
+
+  const current = dom.homeScroll.scrollTop;
+  if (current <= 30) {
+    showChrome();
+    state.lastHomeY = current;
+    return;
+  }
+
+  if (Math.abs(current - state.lastHomeY) > 3) {
+    hideChrome();
+  }
+
+  state.lastHomeY = current;
+  clearTimeout(state.hideTimer);
+  state.hideTimer = setTimeout(() => {
+    showChrome();
+  }, 900);
 }
 
 function bindEvents() {
   dom.feedGrid.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-open]');
-    if (!button) {
-      return;
-    }
-
-    openDetail(button.dataset.open);
-  });
-
-  dom.canvasStack.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-open]');
-    if (!button) {
-      return;
-    }
-
-    openDetail(button.dataset.open);
-  });
-
-  dom.intentStrip.addEventListener('click', (event) => {
-    const target = event.target.closest('[data-intent]');
+    const target = event.target.closest('[data-open]');
     if (!target) {
       return;
     }
 
-    const intent = target.dataset.intent;
-    if (intent === '店内足迹') {
-      if (state.historyOpen) {
-        closeHistorySheet();
-      } else {
-        openHistorySheet();
-      }
+    openDetail(target.dataset.open);
+  });
+
+  dom.canvas.addEventListener('click', (event) => {
+    const openTarget = event.target.closest('[data-open]');
+    if (openTarget) {
+      openDetail(openTarget.dataset.open);
+    }
+  });
+
+  dom.outfitRow.addEventListener('click', (event) => {
+    const target = event.target.closest('[data-open]');
+    if (!target) {
       return;
     }
 
-    void sendIntent(intent);
+    openDetail(target.dataset.open);
   });
 
-  dom.sendBtn.addEventListener('click', () => {
-    void sendIntent();
+  dom.chipsRow.addEventListener('click', (event) => {
+    const target = event.target.closest('[data-chip]');
+    if (!target) {
+      return;
+    }
+
+    runChipAction(target.dataset.chip);
   });
+
+  dom.panelList.addEventListener('click', (event) => {
+    const openTarget = event.target.closest('[data-open]');
+    if (openTarget) {
+      closePanel();
+      openDetail(openTarget.dataset.open);
+      return;
+    }
+
+    const msgTarget = event.target.closest('[data-msg]');
+    if (msgTarget) {
+      closePanel();
+      pinMessage(msgTarget.dataset.msg);
+    }
+  });
+
+  dom.sendBtn.addEventListener('click', sendQuery);
 
   dom.intentInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      void sendIntent();
+      sendQuery();
     }
   });
 
-  dom.detailCloseBtn.addEventListener('click', () => {
-    closeDetail();
+  dom.detailCloseBtn.addEventListener('click', closeDetail);
+  dom.detailTryBtn.addEventListener('click', () => {
+    dom.intentInput.value = '帮我生成这件的AI试衣建议';
+    sendQuery();
   });
 
-  dom.detailAiBtn.addEventListener('click', () => {
-    void sendIntent('AI试衣建议');
-  });
+  dom.scrim.addEventListener('click', closeDetail);
+  dom.panelBackdrop.addEventListener('click', closePanel);
+  dom.panelCloseBtn.addEventListener('click', closePanel);
 
-  dom.historyCloseBtn.addEventListener('click', () => {
-    closeHistorySheet();
-  });
-
-  dom.historyList.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-open]');
-    if (!button) {
-      return;
-    }
-
-    closeHistorySheet();
-    openDetail(button.dataset.open);
-  });
+  dom.homeScroll.addEventListener('scroll', onHomeScroll);
+  dom.canvas.addEventListener('scroll', toggleCanvasSummary);
 }
 
-function init() {
-  renderFeed();
-  renderIntentStrip(currentIntentList());
+async function loadProducts() {
+  try {
+    const response = await fetch('./products.json', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`products status ${response.status}`);
+    }
+
+    const json = await response.json();
+    if (!Array.isArray(json) || !json.length) {
+      throw new Error('empty products');
+    }
+
+    return json;
+  } catch (error) {
+    console.warn('products fallback', error);
+    return FALLBACK_PRODUCTS;
+  }
+}
+
+async function init() {
+  updateStatusTime();
+  setInterval(updateStatusTime, 30000);
+
+  const loaded = await loadProducts();
+  state.products = loaded.slice(0, 32);
+  state.feedIds = state.products.slice(0, 12).map((item) => item.id);
+
+  showHomeMode();
+  renderHomeFeed();
+  renderCanvas();
+  renderChips();
+  showReplySub('');
   bindEvents();
 }
 
