@@ -1418,3 +1418,175 @@ body {
     bottom: calc(162px + env(safe-area-inset-bottom));
   }
 }
+
+/* iPhone 14 Pro Max portrait: 430 x 932 */
+@media (min-width: 420px) and (max-width: 440px) and (min-height: 900px) {
+  .sbar-collapsible {
+    font-size: 15px;
+    padding: calc(12px + env(safe-area-inset-top)) 18px 7px;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+    font-size: 9px;
+  }
+
+  .bname {
+    font-size: 18px;
+  }
+
+  .bmeta {
+    font-size: 12px;
+  }
+
+  .btag {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+
+  .anna-text {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .fi-tag {
+    font-size: 11px;
+    min-height: 16px;
+  }
+
+  .fi-name {
+    font-size: 15px;
+    min-height: 38px;
+  }
+
+  .fi-price {
+    font-size: 22px;
+  }
+
+  .chip {
+    font-size: 14px;
+    padding: 7px 13px;
+  }
+
+  .input-field {
+    font-size: 16px;
+    padding: 11px 15px;
+  }
+
+  .send-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .send-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .bbot-collapsible {
+    max-height: 182px;
+  }
+
+  .overlay {
+    top: 102px;
+  }
+
+  .phone.detail-open .overlay {
+    bottom: calc(172px + env(safe-area-inset-bottom));
+  }
+
+  .phone.detail-open .bbot-collapsible {
+    max-height: 186px;
+  }
+
+  .phone.detail-open .panel-region {
+    bottom: calc(184px + env(safe-area-inset-bottom));
+  }
+
+  .prod-name {
+    font-size: 18px;
+  }
+
+  .prod-meta {
+    font-size: 12px;
+  }
+
+  .ac-nm,
+  .ac-lb {
+    font-size: 12px;
+  }
+
+  .ac-rec {
+    font-size: 13px;
+  }
+
+  .sec-t {
+    font-size: 13px;
+  }
+
+  .sz {
+    font-size: 12px;
+    padding: 7px 13px;
+  }
+
+  .size-note {
+    font-size: 12px;
+  }
+
+  .oi-nm {
+    font-size: 11px;
+  }
+
+  .oi-pr {
+    font-size: 12px;
+  }
+
+  .buy-price-main {
+    font-size: 24px;
+  }
+
+  .buy-price-old,
+  .buy-price-badge {
+    font-size: 11px;
+  }
+
+  .buy-bar-inner {
+    height: 38px;
+  }
+
+  .buy-btn {
+    width: 92px;
+    font-size: 12px;
+  }
+
+  .user-bubble {
+    font-size: 14px;
+  }
+
+  .ar-text {
+    font-size: 14px;
+  }
+
+  .panel-title {
+    font-size: 14px;
+  }
+
+  .panel-close,
+  .empty-text,
+  .fp-name,
+  .hl-q,
+  .fp-price {
+    font-size: 13px;
+  }
+
+  .fp-time,
+  .hl-time {
+    font-size: 11px;
+  }
+
+  .hl-tag {
+    font-size: 11px;
+    padding: 2px 7px;
+  }
+}
