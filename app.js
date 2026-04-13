@@ -429,10 +429,11 @@ function recordViewed(productId) {
   }
 }
 
-function closeDetail() {
+function closeDetail(options = {}) {
   if (!state.detailOpen) {
     return;
   }
+  const keepHomeHint = options.keepHomeHint !== false;
 
   const closedId = state.activeProductId;
   state.detailOpen = false;
@@ -451,7 +452,7 @@ function closeDetail() {
   renderHomeFeed();
   renderChips();
 
-  if (state.mode === 'home') {
+  if (state.mode === 'home' && keepHomeHint) {
     showReplySub(HOME_REPLY_TEXT);
 
     if (!state.prefilledAfterView) {
@@ -650,9 +651,13 @@ function sendQuery() {
   state.pinnedMessageId = null;
 
   if (state.detailOpen) {
-    dom.detailInsight.textContent = result.answer;
-    dom.intentInput.value = '';
+    closeDetail({ keepHomeHint: false });
+    showCanvasMode();
+    renderCanvas();
     renderChips();
+    dom.intentInput.value = '';
+    dom.canvas.scrollTop = 0;
+    showReplySub(message.summary);
     return;
   }
 
