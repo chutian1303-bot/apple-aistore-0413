@@ -18,8 +18,18 @@
 - `index.html`：页面结构
 - `styles.css`：样式与动画
 - `app.js`：交互逻辑与本地推荐规则
-- `products.json`：Apple 商品数据
+- `products.json`：Apple 商品知识库（商品名/价格/图片/链接）
+- `scripts/sync-apple-products.mjs`：从 Apple 官网同步商品库
 - `source-journey.html`：用户动线草图页
+
+## 更新商品库
+
+```bash
+cd "/Users/chuaihui/Desktop/codex project/aistore-demo-apple"
+node ./scripts/sync-apple-products.mjs
+```
+
+运行后会自动覆盖 `products.json`，数据来源为 Apple 官网购买页与商品配置页。
 
 ## 本地运行
 
@@ -32,4 +42,4 @@ python3 -m http.server 8080
 
 ## 说明
 
-当前版本为演示环境，商品、价格与推荐逻辑用于 Demo 展示，不代表实时库存与官方活动。
+当前版本为演示环境，商品与价格来自 Apple 官网页面抓取结果；库存、促销和可售地区请以 Apple 官方实时页面为准。

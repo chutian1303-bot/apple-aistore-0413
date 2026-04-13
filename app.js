@@ -1,34 +1,34 @@
 const HOME_TAGS = ['→ 为你优选', '', '→ 今日热门', '', '', '', '', '', '', '', '', ''];
-const HOME_REPLY_TEXT = 'Apple 顾问已为你整理好了 28 款精选产品';
+const HOME_REPLY_TEXT = 'Apple 顾问已为你整理好了最新精选产品';
 
 const FALLBACK_PRODUCTS = [
   {
-    id: 'apple-iphone-15-pro-256',
-    name: 'Apple iPhone 15 Pro 256GB 原色钛金属',
+    id: 'apple-iphone-17-pro-max',
+    name: 'iPhone 17 Pro Max',
     price: 8999,
-    image: 'https://picsum.photos/seed/apple-iphone-15-pro/720/720',
-    link: 'https://www.apple.com/cn/shop/buy-iphone/iphone-15-pro'
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17pro-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jaUtlSkZ1cHdCU1J4ZWZjamdoYzhpRkMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTDc0akx0V0lSSVRoL2tPb3ZabW5DM0k',
+    link: 'https://www.apple.com/cn/shop/buy-iphone/iphone-17-pro'
   },
   {
-    id: 'apple-macbook-air-13-m3-16-512',
-    name: 'Apple MacBook Air 13 英寸 M3 16GB+512GB',
-    price: 11499,
-    image: 'https://picsum.photos/seed/apple-macbook-air-13/720/720',
+    id: 'apple-macbook-air',
+    name: 'MacBook Air',
+    price: 8499,
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbook-air-202503?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKN3dnWXpNRUFSbE1veTFaYXZqWDhWZ2w2T29GWFRmcGlRaHRKa2ZZeG54SDRHeXB5TnVsU3R6Qjd0Y2JzbURyWE56dkQ1M2pkMXloY0FLTkxsc2xNQXArYWpGdS9XeFgvbS9ITnNYOEhYaG4',
     link: 'https://www.apple.com/cn/shop/buy-mac/macbook-air'
   },
   {
-    id: 'apple-ipad-air-11-m2-256',
-    name: 'Apple iPad Air 11 英寸 M2 256GB WLAN',
-    price: 5599,
-    image: 'https://picsum.photos/seed/apple-ipad-air-11/720/720',
+    id: 'apple-ipad-air-11',
+    name: '11 英寸 iPad Air',
+    price: 4799,
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-air-202405?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=U0psRWR6Z2xkY3dwRTZYSCtyQXNFVzF4V1ZRMnQ3VUZxOW9XbE84blhkazJzUm9kdjFCbFNETWhUL0NFUjdrYUVnTTR0dy9GMG1wdkgrK3EyQ1ZzOWE5aFE4VmtCSkdBUVZYOWx3MEhPK1E',
     link: 'https://www.apple.com/cn/shop/buy-ipad/ipad-air'
   },
   {
-    id: 'apple-airpods-pro-2-usbc',
-    name: 'Apple AirPods Pro（第二代，USB-C）',
+    id: 'apple-airpods-pro-3',
+    name: 'AirPods Pro 3',
     price: 1899,
-    image: 'https://picsum.photos/seed/apple-airpods-pro-2/720/720',
-    link: 'https://www.apple.com/cn/shop/product/MTJV3CH/A'
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-3-hero-select-202509?wid=890&hei=890&fmt=jpeg&qlt=90&.v=cmp4MmZ6OWxOeHNNTXh4SzlBNUpEb1RucE9zZTI5eEREaWZpY29lSld3eUptek50N2NUQ2VXdHJ5VEVlUUpYcmJGcXNRQnFCV0w3WVRjTExvdm1ic1YxRUxFRmRlWDBITzhnRmZ5OTRmaVdKTExiOEFsRmxtQ2Nua0tRSC83MkI',
+    link: 'https://www.apple.com/cn/shop/buy-airpods/airpods-pro-3'
   }
 ];
 
