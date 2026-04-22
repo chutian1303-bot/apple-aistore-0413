@@ -5,15 +5,15 @@
 }
 
 :root {
-  --ink: #1a1a1a;
-  --ink-light: #86817a;
-  --ink-faint: #b7b0a8;
-  --paper: #faf9f6;
-  --warm: #f5f0e8;
-  --warm2: #ede8de;
-  --border: #e8e4dc;
-  --green: #2a7a5a;
-  --orange: #ff5000;
+  --ink: #111827;
+  --ink-light: #667085;
+  --ink-faint: #98a2b3;
+  --paper: #f7f8fa;
+  --warm: #fdf3ea;
+  --warm2: #edf2f7;
+  --border: #dde3ed;
+  --green: #1f8a65;
+  --orange: #ff6a00;
 }
 
 html,
@@ -21,7 +21,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Noto Sans SC', sans-serif;
-  background: #dbd7cf;
+  background: radial-gradient(circle at 25% 10%, #3c3f46 0%, #2a2c31 36%, #202328 100%);
   color: var(--ink);
 }
 
@@ -39,8 +39,8 @@ body {
   height: min(860px, calc(100dvh - 16px));
   background: var(--paper);
   border-radius: 34px;
-  border: 1px solid #ccc9c0;
-  box-shadow: 0 0 0 5px #d8d4cb, 0 14px 40px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #434750;
+  box-shadow: 0 0 0 5px #2d313a, 0 22px 50px rgba(0, 0, 0, 0.38), 0 4px 12px rgba(0, 0, 0, 0.22);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -58,8 +58,8 @@ body {
   padding: calc(9px + env(safe-area-inset-top)) 18px 4px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink);
-  background: var(--paper);
+  color: #f8fafc;
+  background: #131722;
   flex-shrink: 0;
   max-height: 44px;
   overflow: hidden;
@@ -74,8 +74,8 @@ body {
 }
 
 .bbar-collapsible {
-  background: var(--paper);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(130deg, #141a28 0%, #171d2c 60%, #111723 100%);
+  border-bottom: 1px solid #2a3040;
   flex-shrink: 0;
   max-height: 80px;
   overflow: hidden;
@@ -98,14 +98,14 @@ body {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
-  background: var(--ink);
+  background: #f7f8fa;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10.5px;
   font-weight: 800;
-  color: #fff;
+  color: #131722;
   letter-spacing: 0.4px;
 }
 
@@ -125,17 +125,17 @@ body {
 .bname {
   font-size: 16.5px;
   font-weight: 700;
-  color: var(--ink);
+  color: #f8fafc;
 }
 
 .bdot {
   font-size: 10.5px;
-  color: #d0cbc4;
+  color: #4b5565;
 }
 
 .bmeta {
   font-size: 12px;
-  color: var(--ink-light);
+  color: #c4ccda;
 }
 
 .brow2 {
@@ -151,15 +151,15 @@ body {
   font-weight: 600;
   padding: 1px 5px;
   border-radius: 6px;
-  border: 1px solid var(--border);
-  color: var(--ink-light);
-  background: var(--warm);
+  border: 1px solid #394252;
+  color: #d3d9e4;
+  background: #1f2533;
 }
 
 .btag.hi {
-  color: #2a5aa0;
-  border-color: #c0d0e8;
-  background: #eef3fb;
+  color: #ffcfaa;
+  border-color: #74401a;
+  background: #3b2515;
 }
 
 .compact-s1 {
@@ -167,8 +167,8 @@ body {
   align-items: center;
   gap: 8px;
   padding: 0 13px;
-  background: var(--paper);
-  border-bottom: 1px solid var(--border);
+  background: #131722;
+  border-bottom: 1px solid #2a3040;
   flex-shrink: 0;
   max-height: 0;
   overflow: hidden;
@@ -186,14 +186,14 @@ body {
   width: 26px;
   height: 26px;
   flex-shrink: 0;
-  background: var(--ink);
+  background: #f7f8fa;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 9px;
   font-weight: 800;
-  color: #fff;
+  color: #131722;
 }
 
 .cb-text {
@@ -204,22 +204,22 @@ body {
 .cb-name {
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink);
+  color: #f8fafc;
   margin-bottom: 2px;
 }
 
 .cb-sub {
   font-size: 12px;
-  color: var(--ink-light);
+  color: #c4ccda;
 }
 
 .reply-sub {
   display: none;
   padding: 6px 13px;
   font-size: 13.5px;
-  color: var(--ink-light);
+  color: #d3d9e4;
   border-bottom: 1px solid var(--border);
-  background: var(--paper);
+  background: #1a2131;
   flex-shrink: 0;
 }
 
@@ -251,13 +251,17 @@ body {
 }
 
 .anna-zone {
-  padding: 12px 13px 8px;
+  margin: 8px 8px 2px;
+  padding: 12px 13px 10px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, #131a28 0%, #1a2334 100%);
+  border: 1px solid #2d374a;
 }
 
 .anna-text {
   font-size: 16.5px;
   line-height: 1.75;
-  color: var(--ink);
+  color: #e8edf7;
 }
 
 .anna-text .hi {
@@ -268,15 +272,16 @@ body {
 .feed-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 8px;
   padding: 8px 9px 12px;
 }
 
 .fi {
-  background: #fff;
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border);
+  box-shadow: 0 10px 18px rgba(16, 24, 40, 0.06);
   cursor: pointer;
   position: relative;
 }
@@ -290,7 +295,7 @@ body {
   font-size: 10.5px;
   color: #bbb;
   position: relative;
-  background: #efebe3;
+  background: #eef2f7;
 }
 
 .fi-img img {
@@ -307,7 +312,7 @@ body {
 .fi-tag {
   min-height: 11px;
   font-size: 10.5px;
-  color: var(--green);
+  color: var(--orange);
   margin-bottom: 2px;
   line-height: 1.2;
 }
@@ -342,7 +347,7 @@ body {
 }
 
 .new-badge {
-  background: var(--ink);
+  background: var(--orange);
 }
 
 .presale-badge {
@@ -376,7 +381,7 @@ body {
 }
 
 .user-bubble {
-  background: var(--ink);
+  background: #1b2434;
   color: #fff;
   border-radius: 12px 12px 3px 12px;
   padding: 7px 10px;
@@ -441,12 +446,12 @@ body {
 }
 
 .chip.foot {
-  background: var(--warm);
+  background: #fff4eb;
   position: relative;
 }
 
 .chip.msg {
-  background: var(--warm2);
+  background: #eff4fb;
 }
 
 .foot-badge {
@@ -485,7 +490,7 @@ body {
 }
 
 .input-field:focus {
-  border-color: var(--ink);
+  border-color: var(--orange);
 }
 
 .input-field::placeholder {
@@ -496,7 +501,7 @@ body {
   width: 27px;
   height: 27px;
   border: none;
-  background: var(--ink);
+  background: var(--orange);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1422,7 +1427,7 @@ body {
   }
 }
 
-/* iPhone 14 Pro Max portrait: 430 x 932 */
+/* Mobile portrait: 430 x 932 */
 @media (min-width: 420px) and (max-width: 440px) and (min-height: 900px) {
   .phone {
     --detail-dock-height: 172px;

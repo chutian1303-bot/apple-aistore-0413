@@ -1,261 +1,86 @@
 [
   {
-    "id": "iphone17pro-main",
-    "name": "iPhone 17 Pro Max",
-    "price": 8999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17pro-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jaUtlSkZ1cHdCU1J4ZWZjamdoYzhpRkMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTDc0akx0V0lSSVRoL2tPb3ZabW5DM0k",
-    "link": "https://www.apple.com/cn/shop/buy-iphone/iphone-17-pro"
+    "id": "an-urban-drape-suit",
+    "name": "都会垂感双排扣西装套装",
+    "price": 1288,
+    "image": "./assets/fashion-products/thumbs/thumb_01.jpg",
+    "link": "#"
   },
   {
-    "id": "iphoneair-main",
-    "name": "iPhone Air",
-    "price": 7999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17air-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jci9mUU0zMkc5ekxlZHFEM05NWkp3NUMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTCtUZHJHS0dDSWYyeUtQd0tjOERiaFE",
-    "link": "https://www.apple.com/cn/shop/buy-iphone/iphone-air"
+    "id": "an-black-power-tailor",
+    "name": "黑金权力感修身西装两件套",
+    "price": 1699,
+    "image": "./assets/fashion-products/thumbs/thumb_02.jpg",
+    "link": "#"
   },
   {
-    "id": "iphone17-main",
-    "name": "iPhone 17",
-    "price": 5999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jaVVYemprcUVJOVFFWHE5dFpoU3I4STgycjlDNGdlREhyeERCVjM1SXkycjBvTHRTQjdCWE9PcW9rdVY3NVlSRE83OVV5YWxuQ1ltOTRFL2xza1R6dzQ",
-    "link": "https://www.apple.com/cn/shop/buy-iphone/iphone-17"
+    "id": "an-tech-leather-onepiece",
+    "name": "机能皮感拼接连体短裙",
+    "price": 1450,
+    "image": "./assets/fashion-products/thumbs/thumb_03.jpg",
+    "link": "#"
   },
   {
-    "id": "iphone17e-main",
-    "name": "iPhone 17e",
-    "price": 4499,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-17e-202603?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jcDV3bGxUYTNFRGViYzhxQm4xNjRwK3duZUlmMUw1alNIdXhJaHpPYTE3V0tYeVk3dW9BYmZDa2xxQitSOWhMaHZsRjZyQkN5cFJNb0EwbmNweTFnWEU",
-    "link": "https://www.apple.com/cn/shop/buy-iphone/iphone-17e"
+    "id": "an-french-contrast-set",
+    "name": "法式极简黑白拼色套裙",
+    "price": 1180,
+    "image": "./assets/fashion-products/thumbs/thumb_04.jpg",
+    "link": "#"
   },
   {
-    "id": "iphone16-main",
-    "name": "iPhone 16 Plus",
-    "price": 5399,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-card-40-16plus-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=WVVFRzUzVk1oblJhbW9PbGNSU25jdHREbWVTOFIvR3N3WE15cm9BcW16R0YzWlhXSEg1RmRKc3RrVStnUzJ0ZEtRNjVHZTlIV04vVjZjbEh0Rm5SYy9pQ3luTytjYXFYQitBeURMRGtNNU0",
-    "link": "https://www.apple.com/cn/shop/buy-iphone/iphone-16"
+    "id": "an-pearl-satin-shirt",
+    "name": "珠光缎面立领衬衫",
+    "price": 899,
+    "image": "./assets/fashion-products/thumbs/thumb_05.jpg",
+    "link": "#"
   },
   {
-    "id": "mbn-2026-main",
-    "name": "MacBook Neo",
-    "price": 4599,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbook-neo-202603?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKOFVIc0pMamhtQTdJT2hNaXc2a1F5UWw2T29GWFRmcGlRaHRKa2ZZeG54SDRHeXB5TnVsU3R6Qjd0Y2JzbURyWEVFbjlJVU41dmw4QVZJN1dUaHpNY0IrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-mac/macbook-neo"
+    "id": "an-mist-blue-knit",
+    "name": "云雾蓝轻薄针织打底衫",
+    "price": 760,
+    "image": "./assets/fashion-products/thumbs/thumb_06.jpg",
+    "link": "#"
   },
   {
-    "id": "macbookair-m5-main-2026",
-    "name": "MacBook Air",
-    "price": 8499,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbook-air-202503?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKN3dnWXpNRUFSbE1veTFaYXZqWDhWZ2w2T29GWFRmcGlRaHRKa2ZZeG54SDRHeXB5TnVsU3R6Qjd0Y2JzbURyWE56dkQ1M2pkMXloY0FLTkxsc2xNQXArYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-mac/macbook-air"
+    "id": "an-wool-volume-coat",
+    "name": "羊毛混纺廓形大衣",
+    "price": 1880,
+    "image": "./assets/fashion-products/thumbs/thumb_07.jpg",
+    "link": "#"
   },
   {
-    "id": "macbookpro-m5-main-2026",
-    "name": "MacBook Pro",
-    "price": 13499,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-macbookpro-14-16-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dzRRdVl2UHpmd3BrL2dpaGRDY2RKL0tDcDdIN2J5MlRJbDZwdXNUam1wUDJ0SUdrYS9VNndoSUR6SjE2NTZ4Q3dzUlMrL0tMOEdKdERZZEhaV2pBNG5MYXhobkxkNHkydGdPaXdJd0ZJRmorbGwzUVNwZEFpcE1WQU1wNTVjU1c",
-    "link": "https://www.apple.com/cn/shop/buy-mac/macbook-pro"
+    "id": "an-amber-belted-trench",
+    "name": "琥珀黄收腰中长风衣",
+    "price": 1560,
+    "image": "./assets/fashion-products/thumbs/thumb_08.jpg",
+    "link": "#"
   },
   {
-    "id": "imac2024-main",
-    "name": "24 英寸 iMac",
-    "price": 10999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-imac-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=SXh2aE4zRm53L0l3NnhGK2wwZFpEeVFpZGxOY0d3emNHMmh4SnZVS1l0QTJzUm9kdjFCbFNETWhUL0NFUjdrYVJRTDhjbFg1ZXlSYWo3eW5aZUZxQjJvbklDSjVXM0pQY3RiODY0MDI2aUU",
-    "link": "https://www.apple.com/cn/shop/buy-mac/imac"
+    "id": "an-evening-gray-commute",
+    "name": "暮色灰通勤阔腿西装套组",
+    "price": 1320,
+    "image": "./assets/fashion-products/thumbs/thumb_01.jpg",
+    "link": "#"
   },
   {
-    "id": "macmini2024-main",
-    "name": "Mac mini",
-    "price": 4499,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-mac-mini-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=MEl2WkNZRmkzTGhzejQ0SHE3b3FoNnQrZHdkUkkvM25CYTVJYWJQRk41QkMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTCthSGMrTVBBVlNQbW04TUlaTnlZU3c",
-    "link": "https://www.apple.com/cn/shop/buy-mac/mac-mini"
+    "id": "an-midnight-sharp-set",
+    "name": "午夜黑利落剪裁套装",
+    "price": 1740,
+    "image": "./assets/fashion-products/thumbs/thumb_02.jpg",
+    "link": "#"
   },
   {
-    "id": "macstudio2025-main",
-    "name": "Mac Studio",
-    "price": 16499,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-mac-studio-202503?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=MEl2WkNZRmkzTGhzejQ0SHE3b3FoeEhISXFsMjRaY2x5ZFpwbkptTldIN0RiOENhazh5Y0NacmRZMFN0dVNvZzJTaS9RTTYzTWg5VUhTM1Ara0JyS08zTzhSOUpOUnhYSEV2M3k5UWRwZkk",
-    "link": "https://www.apple.com/cn/shop/buy-mac/mac-studio"
+    "id": "an-champagne-satin",
+    "name": "香槟白高支缎面衬衫",
+    "price": 980,
+    "image": "./assets/fashion-products/thumbs/thumb_05.jpg",
+    "link": "#"
   },
   {
-    "id": "studiodisplay-main",
-    "name": "Studio Display",
-    "price": 11999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-studio-display-202603?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dVp4cllZZXF6dklEWE1MaXJrMFFsWFE1bTY0LzdtNW13TjROaDVzaTdQTGZPOGdzbXFQKzNyOVN3L2NRSHJCNStFVlF6ZkRtZVJkbnBuR0wwNDgvSnJUbWtka3BEcEp5UWppL0FrTWlvRnQ5c2RrS21IU0RNY2daemxkbzhtY2M",
-    "link": "https://www.apple.com/cn/shop/buy-mac/studio-display"
-  },
-  {
-    "id": "studiodisplay-xdr-main",
-    "name": "Studio Display XDR",
-    "price": 21999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mac-card-40-pro-display-202603?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=UlltQkFYZW9PUVNxbGJESDBPdnR0S0c1aUV5YzRFYjJ5VHRxWllYQ2k3WWw2T29GWFRmcGlRaHRKa2ZZeG54SDRHeXB5TnVsU3R6Qjd0Y2JzbURyWEtUTXBibU9zRFdXcHBDby8xSEhEalIrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-mac/studio-display-xdr/STUDIODISPLAY_XDR_MAIN"
-  },
-  {
-    "id": "ipadpro2025-main",
-    "name": "11 英寸 iPad Pro",
-    "price": 8999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-pro-202405?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=aDFmUE8yL0ZIcG1CVlF3ejZoSTBUbTF4V1ZRMnQ3VUZxOW9XbE84blhkazJzUm9kdjFCbFNETWhUL0NFUjdrYUVnTTR0dy9GMG1wdkgrK3EyQ1ZzOVk5emI2RVlYSVRkMzZLOS9VQVhQeWM",
-    "link": "https://www.apple.com/cn/shop/buy-ipad/ipad-pro"
-  },
-  {
-    "id": "ipadair2026-main",
-    "name": "11 英寸 iPad Air",
-    "price": 4799,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-air-202405?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=U0psRWR6Z2xkY3dwRTZYSCtyQXNFVzF4V1ZRMnQ3VUZxOW9XbE84blhkazJzUm9kdjFCbFNETWhUL0NFUjdrYUVnTTR0dy9GMG1wdkgrK3EyQ1ZzOWE5aFE4VmtCSkdBUVZYOWx3MEhPK1E",
-    "link": "https://www.apple.com/cn/shop/buy-ipad/ipad-air"
-  },
-  {
-    "id": "ipad2025-main",
-    "name": "iPad",
-    "price": 2999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-ipad-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=SFZodklRUStGeVJpUE9iYTA5SFFYbGwrSnJIWjJhMUN2SjF6Kysvd1dxdzgycjlDNGdlREhyeERCVjM1SXkycmorTlFRdUE1QXhRRzN4cmdvU2JhR29CQ1VSdXF0eklXUlZzZ1YxYUU2TWc",
-    "link": "https://www.apple.com/cn/shop/buy-ipad/ipad"
-  },
-  {
-    "id": "ipadmini2024-main",
-    "name": "iPad mini",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-card-40-ipad-mini-202410?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=SFZodklRUStGeVJpUE9iYTA5SFFYckRXSmo5UmJSVFZrL2VnaTRyQWlQYkRiOENhazh5Y0NacmRZMFN0dVNvZzJTaS9RTTYzTWg5VUhTM1Ara0JyS1BaU2ZtcjFuMTU2NDJ5KzgwcGVpcEU",
-    "link": "https://www.apple.com/cn/shop/buy-ipad/ipad-mini"
-  },
-  {
-    "id": "ws11-applewatch",
-    "name": "Apple Watch Series 11",
-    "price": 2999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-s11-202509_GEO_CN?wid=680&hei=528&fmt=jpeg&qlt=90&.v=RGt6QnVpU0piVDZnRHZnWmNNbHB2NlZBdDErSEk3QWcyWnh2ak9GOFNOZTJjSW42RjNkUmxsaVhqRzVyUDdYaTE1UUxLT2t0cW42N3FvQzVqaGhrVWRoSldCbSt1eDdQVzh3bTZENFo5akIrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-watch/apple-watch"
-  },
-  {
-    "id": "watch-se5-main",
-    "name": "Apple Watch SE 3",
-    "price": 1999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-se-202603?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=dFQyNjEycitpbFBFNXA5RHpaQjc1dmtmTUxrN0k3bXk5Rkc5ZUE1R0JqZzJzUm9kdjFCbFNETWhUL0NFUjdrYWpXMmN1SUZuRTA3ZHE2K3NlL08vSGIxL2Q2OVdrdU5zSjVnbHRXUEVDNVk",
-    "link": "https://www.apple.com/cn/shop/buy-watch/apple-watch-se"
-  },
-  {
-    "id": "case-ultra-3-ti-c49",
-    "name": "Apple Watch",
-    "price": 5720,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-ultra3-202509_GEO_CN?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=Yldjd2t3Ymo3YVZBc2hwblI4VFkzckh2d2I2QWRTY0NRMFJRd2UzeExSc0UxeVA4dkM1bHl0dm5jUlFEcHNDblhHUkcvNmtpMGxDZTE1ejhaNlcyMHp1MnZVNkVGSEJOV2tCeXV3UExBSWU4bzFYZHRrcTdFejVlSjhRMnk1S0g",
-    "link": "https://www.apple.com/cn/shop/buy-watch/apple-watch-ultra/CASE_ULTRA_3_TI_C49"
-  },
-  {
-    "id": "cs11-hermes",
-    "name": "Apple Watch Hermès",
-    "price": 7800,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-hermes-202509?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=Ly93VWF6a1dGOWJLL3RMM0s0eGZ6bmNVK3pMVFUxQXlhSWdsS1dpNlR1MUMxQXc4S3pBZE5lUDJlTzVYSUYydFMwV0hhcmdVdXZzZ1NwTlFUaEgwTHpjcGJkYllSSE5oejdnSXFOU0tqU0E",
-    "link": "https://www.apple.com/cn/shop/buy-watch/apple-watch-hermes"
-  },
-  {
-    "id": "case-ultra-3-h-c49",
-    "name": "Apple Watch Hermès Ultra 3",
-    "price": 8200,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-hermes-ultra-202603_GEO_CN?wid=680&hei=528&fmt=jpeg&qlt=90&.v=Ly93VWF6a1dGOWJLL3RMM0s0eGZ6dkxrL1JtTWVkTlZHZC94N3hJUktvRUpKb3lzRExvWFE2Z1R5N0wyT1g4SjV0VzZXemQ1ZkRzK0p5ZFBxZERkQ3lhL3BwUlJDY1EvVUhQeG9QL29uOW5XQmFpdTJLYkZKVG9kZTNHazlKd08",
-    "link": "https://www.apple.com/cn/shop/buy-watch/apple-watch-hermes-ultra/MF2C4CH/B"
-  },
-  {
-    "id": "mfhp4ch-a",
-    "name": "AirPods Pro 3",
-    "price": 1899,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-pro-3-hero-select-202509?wid=940&hei=1112&fmt=png-alpha&.v=cmp4MmZ6OWxOeHNNTXh4SzlBNUpEb1RucE9zZTI5eEREaWZpY29lSld3eWpxMXNjUlV4SEN2MTZxWE5rL3l2d3AxemF2anFla0E2R0xKdlltYU9XUXo5dGhRWlhERVM3YlhPemV3RUhPMzUrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-pro-3"
-  },
-  {
-    "id": "mxp63ch-a",
-    "name": "AirPods 4 - 不支持主动降噪",
-    "price": 999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-4-select-202409_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=WnVKRVRUTFVsYThXaWkydWViL1Q3ZDZGTE9TV3RDcGJJclBqdUtzdTJYYjNHc3NlSmU2dzJyR1kxZEwyTE1neUJkRlpCNVhYU3AwTldRQldlSnpRa0NZZXAxWFNjRXhITDI1RVE5YVpyU0E",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-4"
-  },
-  {
-    "id": "mxp93ch-a",
-    "name": "AirPods 4 - 支持主动降噪",
-    "price": 1399,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-4-anc-select-202409_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=Qklmb1JJend3cVIxSUxIeFBIRk96cUNGMHVRUVpqOEFiUFU4R0xNRVFxdkhJa2hkRmxkTlJIMk9SdFNSaWFNODE1UUxLT2t0cW42N3FvQzVqaGhrVVcvdmFyQU52eG9rbk9Lb1pmQWN1MGgrYWpGdS9XeFgvbS9ITnNYOEhYaG4",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-4"
-  },
-  {
-    "id": "mhwm4ch-a",
-    "name": "AirPods Max 2 - 蓝色",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-blue_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmaVZsckZUTTZZd1pFb3lRTGNlYkF0Yy9BSXRGSWdwVEs0NXdLd3JPRVQ3TGROL2hTdHRlcnVBMFhCNlFSVHgrS01jL2RQeWJYZ1FmWXUzRFBMSzJrTlJTZy9JeUNjV2pzbzd6anYzTldHVWw",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-max"
-  },
-  {
-    "id": "mhwp4ch-a",
-    "name": "AirPods Max 2 - 紫色",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-purple_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdEFZMGtjOXNTYXJEaHFYa1lFVzIyUnJHdFc3SWNOdWRSclF6WTRFc2h1eFJnYUxCQWt1UDJiRlJNZVhPYkVVc2hXdERnUW81QWI5aTlucjZuTWh1dnhzQVNZV1grZHBseDduSWhqSlA3QUE",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-max"
-  },
-  {
-    "id": "mhwk4ch-a",
-    "name": "AirPods Max 2 - 午夜色",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-midnight_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdmVWNWdHYnp5cHkwMldsSElEOHpyd0cyWGRFNFZ5QTk3bFlteis2Q2NNaWpENFdPQTN0TWQ4ejhtTWxrUHVDeElGZGV2eWhZaEljUzNSeDlxcDVuWGszbTFldUtUQzN0ellEWHZ3UUFYSS8",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-max"
-  },
-  {
-    "id": "mhwl4ch-a",
-    "name": "AirPods Max 2 - 星光色",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-starlight_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmdWd1NjlYUXFPTDZEK2xySGJScW1PS1Rpbjg5MjlaRWkwN0JTZEtNR2p3b2dmcFJCOTlLWlREUEJzL3lTN2VnL0cvVnNUQWxFNHNrME94a1pxdUNOU29FM01jakdGSHhMVXhHQ21YeXBIKzU",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-max"
-  },
-  {
-    "id": "mhwn4ch-a",
-    "name": "AirPods Max 2 - 橙色",
-    "price": 3999,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airpods-max-select-202409-orange_FV1?wid=976&hei=916&fmt=jpeg&qlt=90&.v=azQxRkVJKzd6V3J0aGNqWFhLMzBmbVl3dU4zNmtlQ1czYnJUSEJUcWowRnJHdFc3SWNOdWRSclF6WTRFc2h1eFJnYUxCQWt1UDJiRlJNZVhPYkVVc2hXdERnUW81QWI5aTlucjZuTWh1dnk3Zm5tZm5FR0tlWnFHbkRhQU5lZmc",
-    "link": "https://www.apple.com/cn/shop/buy-airpods/airpods-max"
-  },
-  {
-    "id": "mj2j3ch-a",
-    "name": "HomePod mini - 蓝色",
-    "price": 749,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-select-blue-202110_FV1?wid=1868&hei=880&fmt=jpeg&qlt=90&.v=K2c3bEwyaWVDeDZkdHpLbHkwcGVSclkzcFgyeERHUEhNbTRTQzNiY2JCUmg5UEh1YlAveUJWditPbXN3blRmVi91YlVrZnFCSWZSZ3JZTTVzMlVYL3VyZmlwalNjK0xoZU01QWVTSzVKTGFobC9icnR2UFRDanJjclFrY21xTzM",
-    "link": "https://www.apple.com/cn/shop/buy-homepod/homepod-mini"
-  },
-  {
-    "id": "mj2l3ch-a",
-    "name": "HomePod mini - 黄色",
-    "price": 749,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-select-yellow-202110_FV1?wid=1868&hei=880&fmt=jpeg&qlt=90&.v=K2c3bEwyaWVDeDZkdHpLbHkwcGVSaE4velBNdHlNczA1bWJLdHU3d0dhTzB3REtrUExnSnVSelpEdXZEbDh6emh2cmVWZlJxS3lEakdTNUJ0b3RabElLTjQxSElFZVJPbjF4NEwzYXFKTFBnTDQxbmJZbXlOVlovRDA5RFZoczQ",
-    "link": "https://www.apple.com/cn/shop/buy-homepod/homepod-mini"
-  },
-  {
-    "id": "mtju3ch-a",
-    "name": "HomePod mini - 午夜色",
-    "price": 749,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-select-midnight-202407_FV1?wid=1868&hei=880&fmt=jpeg&qlt=90&.v=K2c3bEwyaWVDeDZkdHpLbHkwcGVSaFRaZXZublY0K2p0Ri9sOWcwbVh6aVUvTHBkeUd0RmJJUmY3SGlWbDc5azN6WWY5a1JiR3h2V2h5Mis1dmgwRVVkbTFFQitQQWRJRHBZb055K1dRU3lmeDZEeWhOM2xFeWZvZFNjaEtlTDY",
-    "link": "https://www.apple.com/cn/shop/buy-homepod/homepod-mini"
-  },
-  {
-    "id": "mhy53ch-a",
-    "name": "HomePod mini - 白色",
-    "price": 749,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-select-white-202110_FV1?wid=1868&hei=880&fmt=jpeg&qlt=90&.v=K2c3bEwyaWVDeDZkdHpLbHkwcGVSaVh3VWtBWGpRcmhqdHlJNjVOT2QyekxCM1gvWjZsdy9IamM4SVJ5RVlRQWk3aEZ4ZFFGenkvaGw2NzRqZXFWbnd4dUs1S2RxNkNHMld1Nks2b2VOWGcyNjc2RUJPVExpR2EzRzRZNXFETUw",
-    "link": "https://www.apple.com/cn/shop/buy-homepod/homepod-mini"
-  },
-  {
-    "id": "mj2k3ch-a",
-    "name": "HomePod mini - 橙色",
-    "price": 749,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/homepod-mini-select-orange-202110_FV1?wid=1868&hei=880&fmt=jpeg&qlt=90&.v=K2c3bEwyaWVDeDZkdHpLbHkwcGVSckhndCtsZnAwTnFpWXhSS0Y4SW9oQzB3REtrUExnSnVSelpEdXZEbDh6emh2cmVWZlJxS3lEakdTNUJ0b3RabElLTjQxSElFZVJPbjF4NEwzYXFKTE95SFNiTHNadFZ3VHN2dGIxVHpXci8",
-    "link": "https://www.apple.com/cn/shop/buy-homepod/homepod-mini"
-  },
-  {
-    "id": "mfe94ch-a",
-    "name": "AirTag - 1 件装",
-    "price": 249,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airtag-1pack-select-202601?wid=940&hei=1112&fmt=png-alpha&.v=eVZIdm00RE01SWs3QURJMUxNRitlUUZRNU9LNkVNWnlXdGtyVWlDRm54QmZhS1VCT1k0VG5wendIdURyT0d4ZURrcnNsQUdJUGlKTENUeG5lbFJUV0Y0dnJSYzFEb21pLzZjOUEzZEtaSkk",
-    "link": "https://www.apple.com/cn/shop/buy-airtag/airtag"
-  },
-  {
-    "id": "mfea4ch-a",
-    "name": "AirTag - 4 件装",
-    "price": 849,
-    "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/airtag-4pack-select-202601?wid=940&hei=1112&fmt=png-alpha&.v=QVI2eUgvdU1qT1VRdEZUOXVUVHgrUUZRNU9LNkVNWnlXdGtyVWlDRm54QmZhS1VCT1k0VG5wendIdURyT0d4ZURrcnNsQUdJUGlKTENUeG5lbFJUV1BWa1l0eDdzMlQ3d0x2UXFveE5QNjg",
-    "link": "https://www.apple.com/cn/shop/buy-airtag/airtag"
+    "id": "an-oat-warm-coat",
+    "name": "燕麦奶油保暖羊毛外套",
+    "price": 1960,
+    "image": "./assets/fashion-products/thumbs/thumb_07.jpg",
+    "link": "#"
   }
 ]
